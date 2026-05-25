@@ -1,0 +1,16 @@
+services:
+  cs2:
+    image: ghcr.io/nightfeather0615/cs2_arm_server:latest
+    restart: unless-stopped
+    pull_policy: daily
+    tty: true
+    stdin_open: true
+    ports:
+      - "27015:27015/tcp"
+      - "27015:27015/udp"
+    volumes:
+      - ./server:/server
+    environment:
+      RCON_PASSWD: "REPLACE_ME"
+      MAX_PLAYER: "16"
+      CS_ARGS: "+bot_quota 0 +game_type 0 +game_mode 1 +map de_mirage"
